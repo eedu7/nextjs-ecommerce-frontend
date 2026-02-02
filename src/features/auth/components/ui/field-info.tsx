@@ -1,7 +1,6 @@
 import type { AnyFieldApi } from "@tanstack/react-form";
 import { FieldError } from "@/components/ui/field";
 
-
 export const FieldInfo = ({ field }: { field: AnyFieldApi }) => {
   const { isTouched, isValid, isValidating, errors } = field.state.meta;
 

@@ -32,31 +32,18 @@ export const RegisterForm = () => {
     <form onSubmit={onSubmit} className="space-y-4 w-md">
       <form.Field
         name="username"
-        children={(field) =>
-          <FormInputField
-            field={field}
-            label="Username"
-          />
-        }
+        children={(field) => <FormInputField field={field} label="Username" />}
       />
       <form.Field
         name="email"
         children={(field) => (
-          <FormInputField
-            field={field}
-            label="Email"
-            type="email"
-          />
+          <FormInputField field={field} label="Email" type="email" />
         )}
       />
       <form.Field
         name="password"
         children={(field) => (
-          <FormInputField
-            field={field}
-            label="Password"
-            type="password"
-          />
+          <FormInputField field={field} label="Password" type="password" />
         )}
       />
       <form.Field
@@ -70,19 +57,12 @@ export const RegisterForm = () => {
         )}
       />
       <form.Subscribe
-        selector={(state) => [state.canSubmit, state.isSubmitting, ]}
+        selector={(state) => [state.canSubmit, state.isSubmitting]}
         children={([canSubmit, isSubmitting]) => (
-          <Button
-            type="submit"
-            disabled={!canSubmit}
-            className="w-full"
-          >
-            {
-              isSubmitting ? "..." : "Submit"
-            }
+          <Button type="submit" disabled={!canSubmit} className="w-full">
+            {isSubmitting ? "..." : "Submit"}
           </Button>
         )}
-
       />
     </form>
   );

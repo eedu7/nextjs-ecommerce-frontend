@@ -6,7 +6,7 @@ import { FieldInfo } from "./field-info";
 
 type InputProps = ComponentPropsWithoutRef<typeof Input>;
 
-interface Props extends Omit<InputProps, "name" | "value" | "onChange">{
+interface Props extends Omit<InputProps, "name" | "value" | "onChange"> {
   field: AnyFieldApi;
   label: string;
 }
