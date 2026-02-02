@@ -18,6 +18,10 @@
     "enabled": true,
     "rules": {
       "recommended": true,
+      "correctness": {
+        "noUnusedImports": "error",
+        "noChildrenProp": "off"
+      },
       "suspicious": {
         "noUnknownAtRules": "off"
       }
@@ -30,7 +34,8 @@
   "assist": {
     "actions": {
       "source": {
-        "organizeImports": "on"
+        "organizeImports": "on",
+        "useSortedProperties": "on"
       }
     }
   }
