@@ -2,7 +2,6 @@ import { redirect } from "next/navigation";
 import { ApiError } from "./api/errors";
 import { serverApiFetch } from "./api/server";
 
-
 interface User {
   id: string;
   username: string;
@@ -22,7 +21,7 @@ export async function requireAuth() {
 export async function requireUnAuth() {
   try {
     await serverApiFetch<User>("/users/me");
-    redirect("/dashboard");
+    redirect("/");
   } catch (error) {
     if (error instanceof ApiError && error.status === 401) {
       return;

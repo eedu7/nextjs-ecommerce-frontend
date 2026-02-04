@@ -7,17 +7,21 @@ export interface RegisterPayload extends LoginPayload {
   username: string;
 }
 
+export interface LogoutPayload {
+  access_token: string;
+  refresh_token: string;
+}
+
 export interface AuthUser {
   id: string;
   email: string;
   username: string;
-  role: "customer" | "vendor" | "admin" | "staff";
 }
 
 export interface AuthToken {
-  accessToken: string;
-  refreshToken: string;
-  tokenType: string;
+  access_token: string;
+  refresh_token: string;
+  token_type: string;
 }
 
 export interface AuthResponse {

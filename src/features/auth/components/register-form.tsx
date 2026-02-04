@@ -3,10 +3,12 @@
 import { useForm } from "@tanstack/react-form";
 import type { FormEvent } from "react";
 import { Button } from "@/components/ui/button";
+import { useRegister } from "../hooks/use-auth";
 import { registerSchema } from "../schemas/auth.schemas";
 import { FormInputField } from "./ui/form-input-field";
 
 export const RegisterForm = () => {
+  const { mutateAsync, isPending } = useRegister();
   const form = useForm({
     defaultValues: {
       username: "",
@@ -15,10 +17,14 @@ export const RegisterForm = () => {
       confirmPassword: "",
     },
     validators: {
-      onBlur: registerSchema,
+      onDynamic: registerSchema,
     },
     onSubmit: async ({ value }) => {
-      console.table(value);
+      mutateAsync({
+        username: value.username,
+        email: value.email,
+        password: value.password,
+      });
     },
   });
 
@@ -57,10 +63,9 @@ export const RegisterForm = () => {
         )}
       />
       <form.Subscribe
-        selector={(state) => [state.canSubmit, state.isSubmitting]}
-        children={([canSubmit, isSubmitting]) => (
-          <Button type="submit" disabled={!canSubmit} className="w-full">
-            {isSubmitting ? "..." : "Submit"}
+        children={() => (
+          <Button type="submit" disabled={isPending} className="w-full">
+            {isPending ? "..." : "Submit"}
           </Button>
         )}
       />
